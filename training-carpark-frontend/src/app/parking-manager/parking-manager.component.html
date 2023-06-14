@@ -1,0 +1,50 @@
+<main>
+  <section class="text-container">
+    <div class="title-text">Parking Manager</div>
+    <div class="description-text">Add, edit-icon or delete-icon parkingspace-containers</div>
+  </section>
+  <section class="parkingspace-container-container">
+    <div *ngFor="let story of this.storiesParkingspacesMap | keyvalue" class="accordion-container">
+      <button class="accordion" (click)="setAccordion($event.target)">Story {{ story.key }}</button>
+      <div class="panel">
+        <div *ngFor="let parkingspace of this.storiesParkingspacesMap.get(story.key)" class="parkingspace-container" id="{{ parkingspace.id }}">
+          <div class="parkingspace">
+            <div class="number">{{ parkingspace.number.toString().padStart(3, "0") }}</div>
+            <div class="status">{{ parkingspace.status }}</div>
+          </div>
+          <div class="parkingspace-options">
+            <i class="material-icons edit-icon"  (click)="editParkingSpace()">edit</i>
+            <i class="material-icons delete-icon" (click)="deleteParkingSpace(parkingspace.id)">delete</i>
+          </div>
+        </div>
+        <div class="addparkingspace">
+          <i class="material-icons addCircle" (click)="addParkingSpaceButtonPressed(story.key)">add</i>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<div class="addParkingSpaceView" *ngIf="showAddParkingSpaceView">
+  <div class="createParkingspaceBackground">
+    <div class="createParkingSapceContainer-Container" (keydown)="submitAddParkingSpace($event, story, number)">
+      <div class="createParkingSpaceContainer">
+        <div class="createParkingSpaceCancelButton">
+          <i class="material-icons cancel-icon" (click)="showAddParkingSpaceView = false">close</i>
+        </div>
+        <div class="createParkingSpace">
+          <div class="form_group field">
+            <label class="form_label" for="story">Story: </label>
+            <input class="form_field" id="story" type="text" value="{{ story }}" (input)="updateStory($event)" placeholder="Story" />
+          </div>
+          <div class="form_group field">
+            <label class="form_label" for="number">Number:</label>
+            <input class="form_field" id="number" type="number" value="{{ suggestedNumber }}" (input)="updateNumber($event)" placeholder="Number" />
+          </div>
+        </div>
+        <div class="createParkingSpaceSubmitbutton">
+          <button (click)="addParkingSpace(story, number)">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,284 @@
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  overflow: auto !important;
+}
+.text-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+}
+.title-text {
+  font-size: xx-large;
+}
+.description-text {
+  font-size: larger;
+}
+
+.parkingspace-container-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.accordion {
+  display: flex;
+  justify-content: space-between;
+  background-color: #eee;
+  cursor: pointer;
+  width: 400px;
+  padding: 20px 40px;
+  text-align: left;
+  border: rgba(0, 0, 0, 0.4);
+  border-style: solid;
+  outline: none;
+  transition: 0.4s;
+}
+
+.active,
+.accordion:hover {
+  background-color: #ccc;
+}
+
+.panel {
+  display: flex;
+  align-items: center;
+  max-height: 0;
+  overflow: auto;
+  transition: max-height 0.2s ease-out;
+  flex-direction: column;
+}
+.parkingspace-container {
+  background-color: white;
+  display: flex;
+  width: 80%;
+  padding: 5px 10%;
+  flex-direction: row;
+  justify-content: space-between;
+  transition: 0.4s;
+}
+.parkingspace-container:hover,
+.addparkingspace {
+  background-color: rgb(233, 233, 233);
+}
+.parkingspace > *,
+.parkingspace {
+  font-weight: 600;
+}
+.parkingspace {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  font-size: large;
+}
+
+.parkingspace-options {
+  gap: 30px;
+  display: flex;
+  flex-direction: row;
+}
+
+.number {
+  font-family: monospace;
+  font-size: 19px;
+}
+
+.delete-icon:hover {
+  cursor: pointer;
+  color: rgb(255, 0, 0, 0.7);
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
+.edit-icon {
+  color: rgb(192, 192, 192);
+}
+.edit-icon:hover {
+  cursor: pointer;
+  text-shadow: 2px 2px #3333;
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
+.accordion:after {
+  content: "\02C4";
+  font-size: 13px;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\02C5";
+}
+
+.material-icons {
+  font-size: x-large;
+}
+.space {
+  height: 5px;
+  width: 100%;
+  background-color: rgb(240, 240, 240);
+}
+
+.addparkingspace {
+  justify-content: center;
+}
+
+.addCircle {
+  padding: 10px;
+  line-height: normal;
+  border-radius: 50%;
+  background-color: red;
+  border-width: 0;
+  color: rgba(0, 0, 0, 1);
+  font-size: 30px;
+  margin-top: -50%;
+  background-color: rgb(206, 206, 206);
+}
+
+.addCircle:hover {
+  cursor: pointer;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0);
+}
+
+.A {
+  background-color: red;
+}
+
+.createParkingspaceBackground {
+  z-index: 11;
+  position: absolute;
+  content: "";
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(233, 233, 233, 0.9);
+}
+
+.cancel-icon {
+  cursor: pointer;
+  align-items: flex-end;
+}
+
+.createParkingSapceContainer-Container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.createParkingSpaceContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 1.5rem;
+}
+
+.createParkingSpace {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.createParkingSpaceCancelButton {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+$primary: #11998e;
+$secondary: #38ef7d;
+$white: rgb(105, 105, 105);
+$gray: #464646;
+
+.form_group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+}
+
+.form_field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid $gray;
+  outline: 0;
+  font-size: 1.3rem;
+  color: $white;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .form_label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+}
+
+.form_label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: $gray;
+}
+
+.form_field:focus {
+  ~ .form_label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: $primary;
+    font-weight: 700;
+  }
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, $primary, $secondary);
+  border-image-slice: 1;
+}
+/* reset input */
+.form_field {
+  &:required,
+  &:invalid {
+    box-shadow: none;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+button {
+  background-color: rgb(0, 0, 0, 0.1);
+  padding: 10px 30px;
+  border-radius: 5px;
+  text-align: center;
+  transition-duration: 0.2s;
+  border-style: none;
+}
+button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0);
+}

@@ -1,0 +1,11 @@
+<main id="mainContainer">
+  <div class="storiescontainer">
+    <ng-template ngFor let-i="index" [ngForOf]="stories">
+      <button class="stories" id="{{ stories[i] }}" (click)="renderCarParkStory(stories[i])">Story {{ stories[i] }}</button>
+    </ng-template>
+  </div>
+  <div id="maincanvas">
+    <canvas #parkingspaceCanvas [width]="canvasbreite" [height]="canvashoehe"></canvas>
+  </div>
+  <div id="checkincheckoutcontainer"></div>
+</main>
